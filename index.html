@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Планировщик привычек</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Шапка -->
+        <header class="header">
+            <h1>Мои привычки</h1>
+            <div class="user-icon">
+                <img src="https://placehold.co/40x40/E2E8F0/4A5568?text=U" alt="user icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/E2E8F0/4A5568?text=U';">
+            </div>
+        </header>
+
+        <!-- Список привычек -->
+        <section class="habits">
+            <h2>Сегодня (3)</h2>
+            
+            <!-- Привычка 1 -->
+            <div class="habit completed">
+                <div class="habit-info">
+                    <div class="habit-icon blue"></div>
+                    <span>Сделать утреннюю зарядку</span>
+                </div>
+                <!-- ИЗМЕНЕНИЕ: Добавлены кнопки управления -->
+                <div class="habit-actions">
+                    <button class="habit-btn edit-btn" title="Редактировать">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M17.71,4.29a1,1,0,0,0-1.42,0L13,7.59V10H10V7L3,14v7H10V18l3-3,3.29-3.29a1,1,0,0,0,0-1.42Z"/><path d="M20.71,7.29a1,1,0,0,0,0-1.42L18.13,3.29a1,1,0,0,0-1.42,0L15,5l-1.59,1.59L17,10l1.59-1.59Z"/></svg>
+                    </button>
+                    <button class="habit-btn delete-btn" title="Удалить">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Z"/></svg>
+                    </button>
+                    <input type="checkbox" checked>
+                </div>
+            </div>
+
+            <!-- Привычка 2 -->
+            <div class="habit">
+                <div class="habit-info">
+                    <div class="habit-icon green"></div>
+                    <span>Выпить 1л воды</span>
+                </div>
+                <!-- ИЗМЕНЕНИЕ: Добавлены кнопки управления -->
+                <div class="habit-actions">
+                    <button class="habit-btn edit-btn" title="Редактировать">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M17.71,4.29a1,1,0,0,0-1.42,0L13,7.59V10H10V7L3,14v7H10V18l3-3,3.29-3.29a1,1,0,0,0,0-1.42Z"/><path d="M20.71,7.29a1,1,0,0,0,0-1.42L18.13,3.29a1,1,0,0,0-1.42,0L15,5l-1.59,1.59L17,10l1.59-1.59Z"/></svg>
+                    </button>
+                    <button class="habit-btn delete-btn" title="Удалить">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Z"/></svg>
+                    </button>
+                    <input type="checkbox">
+                </div>
+            </div>
+
+            <!-- Привычка 3 -->
+            <div class="habit">
+                <div class="habit-info">
+                    <div class="habit-icon purple"></div>
+                    <span>Читать 30 минут</span>
+                </div>
+                <!-- ИЗМЕНЕНИЕ: Добавлены кнопки управления -->
+                <div class="habit-actions">
+                    <button class="habit-btn edit-btn" title="Редактировать">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M17.71,4.29a1,1,0,0,0-1.42,0L13,7.59V10H10V7L3,14v7H10V18l3-3,3.29-3.29a1,1,0,0,0,0-1.42Z"/><path d="M20.71,7.29a1,1,0,0,0,0-1.42L18.13,3.29a1,1,0,0,0-1.42,0L15,5l-1.59,1.59L17,10l1.59-1.59Z"/></svg>
+                    </button>
+                    <button class="habit-btn delete-btn" title="Удалить">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Z"/></svg>
+                    </button>
+                    <input type="checkbox">
+                </div>
+            </div>
+        </section>
+
+        <!-- Обёртка для десктопной сетки -->
+        <div class="desktop-grid">
+            <!-- График прогресса -->
+            <section class="progress">
+                <h2>Прогресс за неделю</h2>
+                <div class="graph">
+                    <!-- ИЗМЕНЕНИЕ: Столбцы теперь содержат сегменты -->
+                    <!-- Пн (2/3 привычки) -->
+                    <div class="bar" style="height: 67%">
+                        <div class="bar-segment" style="background-color: #dbeafe;"></div>
+                        <div class="bar-segment" style="background-color: #d1fae5;"></div>
+                        <span>Пн</span>
+                    </div>
+                    <!-- Вт (3/3 привычки) -->
+                    <div class="bar" style="height: 100%">
+                        <div class="bar-segment" style="background-color: #dbeafe;"></div>
+                        <div class="bar-segment" style="background-color: #d1fae5;"></div>
+                        <div class="bar-segment" style="background-color: #e9d5ff;"></div>
+                        <span>Вт</span>
+                    </div>
+                    <!-- Ср (1/3 привычки) -->
+                    <div class="bar" style="height: 33%">
+                        <div class="bar-segment" style="background-color: #e9d5ff;"></div>
+                        <span>Ср</span>
+                    </div>
+                    <!-- Чт (2/3 привычки) -->
+                    <div class="bar" style="height: 67%">
+                        <div class="bar-segment" style="background-color: #dbeafe;"></div>
+                        <div class="bar-segment" style="background-color: #e9d5ff;"></div>
+                        <span>Чт</span>
+                    </div>
+                    <!-- Пт (1/3 привычки) -->
+                    <div class="bar" style="height: 33%">
+                        <div class="bar-segment" style="background-color: #d1fae5;"></div>
+                        <span>Пт</span>
+                    </div>
+                    <!-- Сб (3/3 привычки, активный) -->
+                    <div class="bar active" style="height: 100%">
+                        <div class="bar-segment" style="background-color: #dbeafe;"></div>
+                        <div class="bar-segment" style="background-color: #d1fae5;"></div>
+                        <div class="bar-segment" style="background-color: #e9d5ff;"></div>
+                        <span>Сб</span>
+                    </div>
+                    <!-- Вс (0/3 привычки) -->
+                    <div class="bar" style="height: 0%">
+                        <span>Вс</span>
+                    </div>
+                </div>
+            </section>
+    
+            <!-- Добавление привычки -->
+            <section class="new-habit">
+                <h2>Добавить привычку</h2>
+                <form>
+                    <label for="habit-name">Название</label>
+                    <input type="text" id="habit-name" placeholder="Например, Медитировать 10 минут">
+                    <button type="button">Добавить</button>
+                </form>
+            </section>
+        </div>
+
+        <!-- Плавающая кнопка -->
+        <button class="add-btn">+</button>
+
+    </div>
+
+</body>
+</html>

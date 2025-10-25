@@ -1,0 +1,396 @@
+body {
+    /* ИЗМЕНЕНИЕ: Используем более современный шрифт Inter */
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #F5F7FA;
+    margin: 0;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+/* Шапка */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.header h1 {
+    font-size: 24px;
+    font-weight: 700; /* Жирнее */
+    margin: 0;
+}
+
+.user-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Заголовки секций */
+section h2 {
+    font-size: 18px;
+    font-weight: 600; /* Жирнее */
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+/* Список привычек */
+.habit {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Тень чуть заметнее */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    transition: background-color 0.3s, opacity 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+.habit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.07); /* Тень при наведении */
+}
+
+.habit.completed {
+    background-color: #f0f0f0;
+    opacity: 0.7;
+}
+
+.habit.completed span {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.habit-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+    font-weight: 500; /* Немного жирнее текст */
+}
+
+.habit-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.habit-icon.blue { background-color: #dbeafe; }
+.habit-icon.green { background-color: #d1fae5; }
+.habit-icon.purple { background-color: #e9d5ff; }
+
+/* ИЗМЕНЕНИЕ: Стили для кнопок управления привычкой */
+.habit-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.habit-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* По умолчанию скрыты */
+    opacity: 0;
+    transition: opacity 0.2s, background-color 0.2s;
+}
+
+/* Показываем кнопки при наведении на всю карточку */
+.habit:hover .habit-btn {
+    opacity: 1;
+}
+
+.habit-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: #888; /* Нейтральный цвет иконки */
+    transition: fill 0.2s;
+}
+
+.habit-btn:hover svg {
+    fill: #333; /* Темнее при наведении */
+}
+
+.habit-btn.edit-btn:hover {
+    background-color: #e0e7ff; /* Фон при наведении */
+}
+.habit-btn.delete-btn:hover {
+    background-color: #ffe4e6; /* Фон при наведении */
+}
+.habit-btn.delete-btn:hover svg {
+    fill: #ef4444; /* Красный при наведении */
+}
+
+
+.habit input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    cursor: pointer;
+    margin-left: 5px; /* Небольшой отступ от кнопок */
+}
+
+/* Прогресс */
+.progress {
+    margin-top: 30px;
+}
+
+.graph {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 200px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+/* ИЗМЕНЕНИЕ: Стили для столбцов графика */
+.bar {
+    width: 12%;
+    border-radius: 6px;
+    position: relative;
+    transition: all 0.3s;
+    /* Убираем фон, так как он будет из сегментов */
+    /* background-color: #e0e7ff; */ 
+    
+    /* Добавляем flex для сегментов */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Чтобы сегменты не вылезали за радиус */
+}
+
+.bar:hover {
+    transform: translateY(-3px);
+}
+
+.bar.active {
+    /* Убираем фон, добавляем тень для выделения */
+    /* background-color: #4f46e5; */
+    box-shadow: 0 0 12px rgba(79, 70, 229, 0.5);
+}
+
+/* ИЗМЕНЕНИЕ: Стили для сегментов внутри столбца */
+.bar-segment {
+    /* Сегменты делят высоту столбца поровну */
+    flex-grow: 1; 
+    transition: all 0.3s;
+    /* Добавим рамку, чтобы было видно разделение */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5); 
+}
+.bar-segment:last-child {
+    border-bottom: none;
+}
+
+
+.bar span {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px;
+    color: #555;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Добавление привычки */
+.new-habit {
+    margin-top: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.new-habit form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.new-habit label {
+    font-weight: 500;
+    color: #555;
+}
+
+.new-habit input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: "Inter", sans-serif; /* Наследуем шрифт */
+}
+
+.new-habit input:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+.new-habit button {
+    width: 100%;
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: "Inter", sans-serif; /* Наследуем шрифт */
+}
+
+.new-habit button:hover {
+    background-color: #4338ca;
+}
+
+/* Плавающая кнопка */
+.add-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 26px;
+    line-height: 48px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.add-btn:hover {
+    background-color: #4338ca;
+    transform: scale(1.1);
+}
+
+/* ============================================
+   Планшеты (от 640px)
+============================================ */
+@media (min-width: 640px) {
+    .container {
+        padding: 30px;
+    }
+
+    .header h1 {
+        font-size: 28px;
+    }
+    
+    section h2 {
+        font-size: 20px;
+    }
+
+    .add-btn {
+        width: 52px;
+        height: 52px;
+        font-size: 28px;
+        line-height: 52px;
+    }
+}
+
+/* ============================================
+   Десктоп (от 1024px)
+============================================ */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 40px;
+    }
+
+    /* ИЗМЕНЕНИЕ: В оригинале у вас была ошибка, 
+       на десктопе сетка должна быть, а не убираться.
+       Я изменил flex-direction на 'row' и 
+       распределил место. */
+    .desktop-grid {
+        display: flex;
+        flex-direction: row; /* Возвращаем сетку */
+        gap: 30px;
+        align-items: flex-start; /* Выравниваем по верху */
+    }
+
+    /* Список привычек и график занимают левую часть */
+    .habits {
+        flex: 2; /* Больше места */
+    }
+
+    .progress {
+        flex: 2; /* Больше места */
+        margin-top: 0;
+    }
+
+    /* Форма добавления занимает правую, меньшую часть */
+    .new-habit {
+        flex: 1; /* Меньше места */
+        margin-top: 0;
+        /* Прилипает к верху */
+        position: sticky;
+        top: 40px; 
+    }
+
+    /* Возвращаем форму в вертикальный вид, так как она теперь в узкой колонке */
+    .new-habit form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .new-habit label {
+        display: block; /* Показываем лейбл обратно */
+    }
+
+    .new-habit input {
+        margin-bottom: 0;
+    }
+
+    .new-habit button {
+        width: 100%; /* Кнопка на всю ширину */
+        margin-left: 0;
+        margin-top: 10px; /* Отступ сверху */
+    }
+
+    /* Центровка подписей под графиком */
+    .graph {
+        padding-bottom: 45px;
+    }
+
+    .bar span {
+        bottom: -28px;
+        font-size: 14px;
+    }
+
+    /* Кнопка "+" аккуратная */
+    .add-btn {
+        width: 46px;
+        height: 46px;
+        font-size: 24px;
+        line-height: 46px;
+        right: 35px;
+        bottom: 35px;
+    }
+}
