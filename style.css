@@ -156,37 +156,39 @@ section h2 {
     border-radius: 12px;
     padding: 20px 15px 40px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start; /* было space-between */
     align-items: flex-end;
+    gap: 16px;                    /* новый фиксированный промежуток между барами */
     height: 200px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     position: relative;
 }
 
+
 /* ИЗМЕНЕНИЕ: Стили для столбцов графика */
 .bar {
     width: 12%;
-    border-radius: 6px;
+    border-radius: 10px;
     position: relative;
     transition: all 0.3s;
-    /* Убираем фон, так как он будет из сегментов */
-    /* background-color: #e0e7ff; */ 
-    
-    /* Добавляем flex для сегментов */
+
     display: flex;
     flex-direction: column;
-    overflow: hidden; /* Чтобы сегменты не вылезали за радиус */
+
+    /* общий стиль для всех дней */
+    background-color: #e5edff;                 /* мягкий светлый фон */
+    box-shadow: 0 0 6px rgba(148,163,184,0.35); /* лёгкая тень */
 }
 
 .bar:hover {
     transform: translateY(-3px);
 }
 
+/* Активный день — сильнее подсветка */
 .bar.active {
-    /* Убираем фон, добавляем тень для выделения */
-    /* background-color: #4f46e5; */
-    box-shadow: 0 0 12px rgba(79, 70, 229, 0.5);
+    box-shadow: 0 0 14px rgba(79, 70, 229, 0.55);
 }
+
 
 /* ИЗМЕНЕНИЕ: Стили для сегментов внутри столбца */
 .bar-segment {
